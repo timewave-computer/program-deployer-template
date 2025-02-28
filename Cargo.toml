@@ -4,7 +4,7 @@ authors    = ["Timewave Labs"]
 edition    = "2021"
 license    = "Apache-2.0"
 version    = "0.1.0"
-repository = "https://github.com/timewave-computer/valence-protocol"
+repository = "https://github.com/timewave-computer/program_deployer"
 
 [dependencies]
 localic-std             = { git = "https://github.com/strangelove-ventures/interchaintest", branch = "main" }
