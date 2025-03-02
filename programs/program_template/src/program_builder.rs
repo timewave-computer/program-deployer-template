@@ -1,4 +1,3 @@
-use localic_utils::{NEUTRON_CHAIN_ADMIN_ADDR, NEUTRON_CHAIN_NAME};
 use valence_authorization_utils::{
     authorization_message::{Message, MessageDetails, MessageType, ParamRestriction},
     builders::{AtomicFunctionBuilder, AtomicSubroutineBuilder, AuthorizationBuilder},
@@ -13,13 +12,17 @@ use valence_program_manager::{
 use valence_splitter_library::msg::{UncheckedSplitAmount, UncheckedSplitConfig};
 
 /// Write your program using the program builder
-pub(crate) fn program_builder() -> ProgramConfig {
+pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
+    // program params
+    let owner = params.get("owner");
+
+    // Domains
+    let neutron_domain = valence_program_manager::domain::Domain::CosmosCosmwasm("neutron".to_string());
+
     // Write your program
     let swap_amount: u128 = 1_000_000_000;
 
-    let mut builder = ProgramConfigBuilder::new(NEUTRON_CHAIN_ADMIN_ADDR.to_string());
-    let neutron_domain =
-        valence_program_manager::domain::Domain::CosmosCosmwasm(NEUTRON_CHAIN_NAME.to_string());
+    let mut builder = ProgramConfigBuilder::new(owner);
 
     let account_1 = builder.add_account(AccountInfo::new(
         "test_1".to_string(),
@@ -31,7 +34,7 @@ pub(crate) fn program_builder() -> ProgramConfig {
         &neutron_domain,
         AccountType::default(),
     ));
-
+    
     let library_config = valence_splitter_library::msg::LibraryConfig {
         input_addr: account_1.clone(),
         splits: vec![UncheckedSplitConfig {

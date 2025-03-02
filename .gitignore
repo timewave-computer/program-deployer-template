@@ -1,5 +1,6 @@
 # macOS
 .DS_Store
+.env
 
 # Build results
 /artifacts
@@ -17,16 +18,9 @@
 *.iml
 **/.editorconfig
 
-# schemas
-contracts/**/schema/raw
-program-manager/schema/raw
+# manager configs
+manager_configs/**
 
-# e2e
-e2e/configs
-e2e/code_id_cache*
-e2e/tmp
-e2e/hyperlane_db_relayer
-
-deployment/results
-deployment/configs/local
-deployment/output_program
+# program outputs
+# Remove if you want to save them to your github
+programs/**/output
