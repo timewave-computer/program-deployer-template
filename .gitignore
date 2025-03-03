@@ -23,4 +23,5 @@ manager_configs/**
 
 # program outputs
 # Remove if you want to save them to your github
-programs/**/output
+programs/**/output/*
+!programs/**/output/README.md
