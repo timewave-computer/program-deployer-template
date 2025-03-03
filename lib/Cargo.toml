@@ -14,3 +14,4 @@ config                  = { workspace = true }
 glob                    = { workspace = true }
 chrono                  = { workspace = true }
 dotenvy                 = { workspace = true }
+cmd_lib                 = { workspace = true }

@@ -1,5 +1,7 @@
 use config::Config as ConfigHelper;
-use std::error::Error;
+use std::{error::Error, path::PathBuf};
+
+const MANAGER_CONFIGS_REPO_URL: &str = "https://github.com/timewave-computer/valence-program-manager-config.git";
 
 pub fn get_manager_config(
     path: &str,
@@ -12,6 +14,7 @@ pub fn get_manager_config(
         .expect("Config path should be a string");
 
     if !config_path.exists() {
+        clone_config_from_repo(path, &config_path)?;
         return Err(format!("Manager config for {} environment does not exist", path).into());
     }
 
@@ -69,4 +72,31 @@ pub(crate) async fn set_manager_config(path: &str) -> Result<(), Box<dyn Error>>
     let mut gc = valence_program_manager::config::GLOBAL_CONFIG.lock().await;
     *gc = config;
     Ok(())
+}
+
+fn clone_config_from_repo(env_path: &str, config_path: &PathBuf) -> Result<(), Box<dyn Error>> {
+    // DO NOT CHANGE THIS
+    let tmp_dir = std::env::current_dir()?.join("tmp");
+
+    if !tmp_dir.exists() {
+        std::fs::create_dir_all(&tmp_dir)?;
+    }
+
+    let tmp_configs = tmp_dir.join("manager_configs");
+
+    cmd_lib::run_cmd!(git clone ${MANAGER_CONFIGS_REPO_URL} ${tmp_configs})?;
+
+    let tmp_config_path = tmp_configs.join(env_path);
+
+    if !tmp_config_path.exists() {
+        return Err(format!("Manager config for {} environment does not exist", env_path).into());
+    }
+
+    cmd_lib::run_cmd!(
+        mv ${tmp_config_path} ${config_path};
+        rm -rf ${tmp_dir};
+    )?;
+
+    Err(format!("Done").into())
+    // Ok(())
 }
