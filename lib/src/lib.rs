@@ -3,7 +3,7 @@ mod manager_config;
 mod program_config;
 mod program_params;
 
-use std::{ error::Error, io::Write, path::PathBuf};
+use std::{error::Error, io::Write, path::PathBuf};
 
 use chrono::Utc;
 use clap::{command, Parser};
@@ -14,8 +14,9 @@ use program_config::read_program_config_from_json;
 use program_params::get_program_params;
 use valence_program_manager::program_config::ProgramConfig;
 
-// Reexport params to programs
+// Re-export params to programs
 pub use program_params::ProgramParams;
+pub use helpers::EMPTY_VEC;
 
 // |X| - Read or get the manager config
 // |X| - read program parameters into a map
@@ -59,7 +60,7 @@ where
 
     // Set manager config for the chosen environment
     set_manager_config(&args.target_env).await?;
-    
+
     // If a path to program_config.json was passed, use it
     let mut program_config = if let Some(program_config_path) = args.program_config_path {
         read_program_config_from_json(&program_config_path)
@@ -71,13 +72,25 @@ where
     };
 
     // Write the raw program config to file
-    write_to_output(program_config.clone(), &program_path, &timestamp, "raw")?;
+    write_to_output(
+        program_config.clone(),
+        &program_path,
+        &timestamp,
+        &args.target_env,
+        "raw",
+    )?;
 
     // Use program manager to deploy the program
     valence_program_manager::init_program(&mut program_config).await?;
 
     // Write instantiated program to file
-    write_to_output(program_config, &program_path, &timestamp, "instantiated")?;
+    write_to_output(
+        program_config,
+        &program_path,
+        &timestamp,
+        &args.target_env,
+        "instantiated",
+    )?;
 
     Ok(())
 }
@@ -86,9 +99,12 @@ fn write_to_output(
     program_config: ProgramConfig,
     program_path: &PathBuf,
     time: &str,
+    env: &str,
     prefix: &str,
 ) -> Result<(), Box<dyn Error>> {
-    let path = program_path.join("output").join(time);
+    let path = program_path
+        .join("output")
+        .join(format!("{}-{}", env, time));
 
     if !path.exists() {
         std::fs::create_dir_all(path.clone())?;
