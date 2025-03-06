@@ -16,4 +16,4 @@ chrono                  = { workspace = true }
 dotenvy                 = { workspace = true }
 cmd_lib                 = { workspace = true }
 
-valence_library_utils = { workspace = true }
+valence-library-utils = { workspace = true }

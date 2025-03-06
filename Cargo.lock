@@ -1484,6 +1484,7 @@ dependencies = [
  "dotenvy",
  "glob",
  "serde_json",
+ "valence-library-utils",
  "valence-program-manager",
 ]
 
