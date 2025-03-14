@@ -3,7 +3,11 @@ mod manager_config;
 mod program_config;
 mod program_params;
 
-use std::{error::Error, io::Write, path::PathBuf};
+use std::{
+    error::Error,
+    io::Write,
+    path::{Path, PathBuf},
+};
 
 use chrono::Utc;
 use clap::{command, Parser};
@@ -15,8 +19,8 @@ use program_params::get_program_params;
 use valence_program_manager::program_config::ProgramConfig;
 
 // Re-export params to programs
-pub use program_params::ProgramParams;
 pub use helpers::EMPTY_VEC;
+pub use program_params::ProgramParams;
 
 #[derive(clap::ValueEnum, Clone, Debug, PartialEq)]
 enum Mode {
@@ -87,10 +91,16 @@ where
         Ok(_) => (),
         Err(e) => {
             if args.mode == Mode::Debug {
-                write_to_output(program_config, &program_path, &timestamp, &args.target_env, "debug")?;
+                write_to_output(
+                    program_config,
+                    &program_path,
+                    &timestamp,
+                    &args.target_env,
+                    "debug",
+                )?;
             }
             return Err(Box::new(e));
-        },
+        }
     };
 
     // Write instantiated program to file
@@ -107,7 +117,7 @@ where
 
 fn write_to_output(
     program_config: ProgramConfig,
-    program_path: &PathBuf,
+    program_path: &Path,
     time: &str,
     env: &str,
     prefix: &str,

@@ -21,7 +21,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         valence_program_manager::domain::Domain::CosmosCosmwasm("neutron".to_string());
 
     // Write your program
-    let swap_amount: u128 = 1_000_000_000;
+    let swap_amount: u128 = 1_000;
 
     let mut builder = ProgramConfigBuilder::new(owner);
 

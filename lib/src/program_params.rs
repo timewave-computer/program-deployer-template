@@ -40,7 +40,7 @@ impl ProgramParams {
     pub fn get(&self, key: &str) -> String {
         self.cfg
             .get::<String>(key)
-            .expect(format!("Key {} not found", key).as_str())
+            .unwrap_or_else(|_| panic!("Key {} not found", key))
     }
 
     pub fn get_array(&self, key: &str) -> Vec<String> {
