@@ -153,5 +153,6 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
 
     builder.add_authorization(authorization);
 
+    // Build program config
     builder.build()
 }
