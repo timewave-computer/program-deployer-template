@@ -139,7 +139,7 @@ fn write_to_output(
 ) -> Result<(), Box<dyn Error>> {
     let path = program_path
         .join("output")
-        .join(format!("{}-{}-{}", status, env, time));
+        .join(format!("{}-{}-{}", env, time, status));
 
     if !path.exists() {
         std::fs::create_dir_all(path.clone())?;
