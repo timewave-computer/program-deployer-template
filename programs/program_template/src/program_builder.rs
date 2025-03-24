@@ -14,21 +14,6 @@ use valence_program_manager::{
     program_config_builder::ProgramConfigBuilder,
 };
 
-// Example program that move funds from first account to second account and vice versa
-//
-// We first take our parameters to get the owner, denom and max_forward_amount.
-// Those are set as parameters because they might change from 1 deployment environment to another (mainnet, testnet, etc)
-//
-// We then create 2 accounts, one for the first account and one for the second account.
-//
-// We then create 2 libraries, first forwarder for first account to forward funds to the second account and
-// second forwarder for the second account to forward funds to the first account.
-//
-// We then create 2 authorizations, one for the first account to forward funds to the second account and
-// one for the second account to forward funds to the first account.
-//
-// The program config is then built
-
 /// Write your program using the program builder
 pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
     //---- program params ----//
@@ -36,8 +21,12 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
     let owner = params.get("owner");
     // Denom to use for forwarding
     let denom = params.get("denom");
-    // Max amount to forward
-    let max_forward_amount = params.get("max_forward_amount");
+    // Max amount to forward from first account to second account
+    let max_first_forward_amount = params.get("max_first_forward_amount");
+    // Max amount to forward from second account to first account
+    let max_second_forward_amount = params.get("max_second_forward_amount");
+    // Authorized address that can change the forwarders config
+    let authorized_addr = params.get("authorized_addr");
 
     //---- Set builder ----//
     let mut builder = ProgramConfigBuilder::new("example-program", owner.as_str());
@@ -68,7 +57,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         output_addr: acc_second.clone(),
         forwarding_configs: vec![valence_forwarder_library::msg::UncheckedForwardingConfig {
             denom: UncheckedDenom::Native(denom.clone()),
-            max_amount: Uint128::from_str(max_forward_amount.as_str()).unwrap(),
+            max_amount: Uint128::from_str(max_first_forward_amount.as_str()).unwrap(),
         }],
         forwarding_constraints: ForwardingConstraints::new(None),
     };
@@ -87,7 +76,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         output_addr: acc_first.clone(),
         forwarding_configs: vec![valence_forwarder_library::msg::UncheckedForwardingConfig {
             denom: UncheckedDenom::Native(denom),
-            max_amount: Uint128::from_str(max_forward_amount.as_str()).unwrap(),
+            max_amount: Uint128::from_str(max_second_forward_amount.as_str()).unwrap(),
         }],
         forwarding_constraints: ForwardingConstraints::new(None),
     };
@@ -102,7 +91,6 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
 
     //---- Authorizations ----//
     // First authorization to forward funds from the first account to the second account
-    let action_label = "first_forward";
     let function = AtomicFunctionBuilder::new()
         .with_contract_address(lib_first_forwarder.clone())
         .with_message_details(MessageDetails {
@@ -121,14 +109,13 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         .with_function(function)
         .build();
     let authorization = AuthorizationBuilder::new()
-        .with_label(action_label)
+        .with_label("Forward from first to second")
         .with_subroutine(subroutine)
         .build();
 
     builder.add_authorization(authorization);
 
     // Second authorization to forward funds from the second account to the first account
-    let action_label = "second_forward";
     let function = AtomicFunctionBuilder::new()
         .with_contract_address(lib_second_forwarder.clone())
         .with_message_details(MessageDetails {
@@ -147,12 +134,76 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         .with_function(function)
         .build();
     let authorization = AuthorizationBuilder::new()
-        .with_label(action_label)
+        .with_label("Forward from second to first")
         .with_subroutine(subroutine)
         .build();
 
     builder.add_authorization(authorization);
 
+    // Update first forwarder to change the amount that can be sent
+    let update_first_forward_config_function = AtomicFunctionBuilder::new()
+        .with_contract_address(lib_first_forwarder.clone())
+        .with_message_details(MessageDetails {
+            message_type: MessageType::CosmwasmExecuteMsg,
+            message: Message {
+                name: "update_config".to_string(),
+                params_restrictions: Some(vec![ParamRestriction::MustBeIncluded(vec![
+                    "update_config".to_string(),
+                    "new_config".to_string(),
+                ])]),
+            },
+        })
+        .build();
+
+    let subroutine = AtomicSubroutineBuilder::new()
+        .with_function(update_first_forward_config_function)
+        .build();
+    let authorization = AuthorizationBuilder::new()
+        .with_label("Secure update first forwarder config")
+        .with_mode(
+            valence_authorization_utils::authorization::AuthorizationModeInfo::Permissioned(
+                valence_authorization_utils::authorization::PermissionTypeInfo::WithoutCallLimit(
+                    vec![authorized_addr.clone()],
+                ),
+            ),
+        )
+        .with_subroutine(subroutine)
+        .build();
+
+    builder.add_authorization(authorization);
+
+    // Update second forwarder to change the amount that can be sent
+    let update_second_forward_config_function = AtomicFunctionBuilder::new()
+        .with_contract_address(lib_second_forwarder.clone())
+        .with_message_details(MessageDetails {
+            message_type: MessageType::CosmwasmExecuteMsg,
+            message: Message {
+                name: "update_config".to_string(),
+                params_restrictions: Some(vec![ParamRestriction::MustBeIncluded(vec![
+                    "update_config".to_string(),
+                    "new_config".to_string(),
+                ])]),
+            },
+        })
+        .build();
+
+    let subroutine = AtomicSubroutineBuilder::new()
+        .with_function(update_second_forward_config_function)
+        .build();
+    let authorization = AuthorizationBuilder::new()
+        .with_label("Secure uodate second forwarder config")
+        .with_mode(
+            valence_authorization_utils::authorization::AuthorizationModeInfo::Permissioned(
+                valence_authorization_utils::authorization::PermissionTypeInfo::WithoutCallLimit(
+                    vec![authorized_addr.clone()],
+                ),
+            ),
+        )
+        .with_subroutine(subroutine)
+        .build();
+
+    builder.add_authorization(authorization);
+    
     // Build program config
     builder.build()
 }
