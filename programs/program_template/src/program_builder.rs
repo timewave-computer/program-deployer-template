@@ -19,11 +19,6 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
     //---- Set builder ----//
     let mut builder = ProgramConfigBuilder::new(owner.to_string());
 
-    //---- Domains ----//
-    // Neutron domain
-    let neutron_domain =
-        valence_program_manager::domain::Domain::CosmosCosmwasm("neutron".to_string());
-
     // Juno domain
     let juno_domain = valence_program_manager::domain::Domain::CosmosCosmwasm("juno".to_string());
 
@@ -55,7 +50,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
 
     let lib_first_forwarder = builder.add_library(LibraryInfo::new(
         "first_forwarder".to_string(),
-        &neutron_domain,
+        &juno_domain,
         LibraryConfig::ValenceForwarderLibrary(first_forwarder_config),
     ));
 
@@ -64,6 +59,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
     //---- Authorizations ----//
     // First authorization to forward funds from the first account to the second account
     let function = AtomicFunctionBuilder::new()
+        .with_domain(valence_authorization_utils::domain::Domain::External("juno".to_string()))
         .with_contract_address(lib_first_forwarder.clone())
         .with_message_details(MessageDetails {
             message_type: MessageType::CosmwasmExecuteMsg,

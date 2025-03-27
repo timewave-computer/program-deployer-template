@@ -83,7 +83,7 @@ where
     // Set manager config for the chosen environment
     info!("Setting manager config for the chosen environment");
     set_manager_config(&args.target_env).await?;
-
+    
     // If a path to program_config.json was passed, use it
     let mut program_config = if let Some(program_config_path) = args.program_config_path {
         info!("Reading program config from file");

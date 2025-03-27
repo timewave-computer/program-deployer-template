@@ -60,6 +60,7 @@ pub fn get_manager_config(
         .try_deserialize()
         .map_err(|e| e.into())
     // .map_err(|_| "Failed to parse config".into())
+
 }
 
 pub(crate) async fn set_manager_config(path: &str) -> Result<(), Box<dyn Error>> {
