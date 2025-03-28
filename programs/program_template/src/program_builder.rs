@@ -109,7 +109,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         .with_function(function)
         .build();
     let authorization = AuthorizationBuilder::new()
-        .with_label("Forward from first to second")
+        .with_label("Forward_from_first_to_second")
         .with_subroutine(subroutine)
         .build();
 
@@ -134,7 +134,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         .with_function(function)
         .build();
     let authorization = AuthorizationBuilder::new()
-        .with_label("Forward from second to first")
+        .with_label("Forward_from second_to_first")
         .with_subroutine(subroutine)
         .build();
 
@@ -159,7 +159,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         .with_function(update_first_forward_config_function)
         .build();
     let authorization = AuthorizationBuilder::new()
-        .with_label("Secure update first forwarder config")
+        .with_label("Secure_update_first_forwarder_config")
         .with_mode(
             valence_authorization_utils::authorization::AuthorizationModeInfo::Permissioned(
                 valence_authorization_utils::authorization::PermissionTypeInfo::WithoutCallLimit(
@@ -191,7 +191,7 @@ pub fn program_builder(params: deployer_lib::ProgramParams) -> ProgramConfig {
         .with_function(update_second_forward_config_function)
         .build();
     let authorization = AuthorizationBuilder::new()
-        .with_label("Secure uodate second forwarder config")
+        .with_label("Secure_update_second_forwarder_config")
         .with_mode(
             valence_authorization_utils::authorization::AuthorizationModeInfo::Permissioned(
                 valence_authorization_utils::authorization::PermissionTypeInfo::WithoutCallLimit(
