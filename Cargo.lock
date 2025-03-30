@@ -3925,7 +3925,7 @@ checksum = "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
 [[package]]
 name = "valence-account-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -3940,7 +3940,7 @@ dependencies = [
 [[package]]
 name = "valence-astroport-lper"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -3954,7 +3954,7 @@ dependencies = [
 [[package]]
 name = "valence-astroport-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -3964,7 +3964,7 @@ dependencies = [
 [[package]]
 name = "valence-astroport-withdrawer"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -3979,7 +3979,7 @@ dependencies = [
 [[package]]
 name = "valence-authorization"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmos-sdk-proto 0.20.0",
  "cosmwasm-schema 2.2.2",
@@ -3999,7 +3999,7 @@ dependencies = [
 [[package]]
 name = "valence-authorization-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4013,7 +4013,7 @@ dependencies = [
 [[package]]
 name = "valence-base-account"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4029,7 +4029,7 @@ dependencies = [
 [[package]]
 name = "valence-forwarder-library"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4048,7 +4048,7 @@ dependencies = [
 [[package]]
 name = "valence-generic-ibc-transfer-library"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4068,7 +4068,7 @@ dependencies = [
 [[package]]
 name = "valence-ibc-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmos-sdk-proto 0.20.0",
  "cosmwasm-schema 2.2.2",
@@ -4082,7 +4082,7 @@ dependencies = [
 [[package]]
 name = "valence-library-base"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4099,7 +4099,7 @@ dependencies = [
 [[package]]
 name = "valence-library-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4117,7 +4117,7 @@ dependencies = [
 [[package]]
 name = "valence-macros"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4129,7 +4129,7 @@ dependencies = [
 [[package]]
 name = "valence-neutron-ibc-transfer-library"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4151,7 +4151,7 @@ dependencies = [
 [[package]]
 name = "valence-osmosis-cl-lper"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4173,7 +4173,7 @@ dependencies = [
 [[package]]
 name = "valence-osmosis-cl-withdrawer"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4195,7 +4195,7 @@ dependencies = [
 [[package]]
 name = "valence-osmosis-gamm-lper"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4211,7 +4211,7 @@ dependencies = [
 [[package]]
 name = "valence-osmosis-gamm-withdrawer"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4227,7 +4227,7 @@ dependencies = [
 [[package]]
 name = "valence-osmosis-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4239,7 +4239,7 @@ dependencies = [
 [[package]]
 name = "valence-polytone-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4248,7 +4248,7 @@ dependencies = [
 [[package]]
 name = "valence-processor"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4265,7 +4265,7 @@ dependencies = [
 [[package]]
 name = "valence-processor-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4280,7 +4280,7 @@ dependencies = [
 [[package]]
 name = "valence-program-manager"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "aho-corasick",
  "anyhow",
@@ -4337,7 +4337,7 @@ dependencies = [
 [[package]]
 name = "valence-program-registry"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4353,7 +4353,7 @@ dependencies = [
 [[package]]
 name = "valence-program-registry-utils"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4364,7 +4364,7 @@ dependencies = [
 [[package]]
 name = "valence-reverse-splitter-library"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
@@ -4383,7 +4383,7 @@ dependencies = [
 [[package]]
 name = "valence-splitter-library"
 version = "0.1.0"
-source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.1#85ecf4974c62bcb6443ac16b9dd7d178eed07841"
+source = "git+https://github.com/timewave-computer/valence-protocol?tag=v0.1.2#16e604bcdeb54d9b458809487166b8e9c3371299"
 dependencies = [
  "cosmwasm-schema 2.2.2",
  "cosmwasm-std 2.2.2",
