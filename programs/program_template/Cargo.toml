@@ -21,7 +21,6 @@ cw-denom     = { workspace = true }
 # Libraries
 valence-authorization                = { workspace = true }
 valence-base-account                 = { workspace = true }
-valence-storage-account              = { workspace = true }
 valence-processor                    = { workspace = true }
 valence-splitter-library             = { workspace = true }
 valence-astroport-lper               = { workspace = true }
@@ -34,9 +33,6 @@ valence-osmosis-gamm-lper            = { workspace = true }
 valence-osmosis-gamm-withdrawer      = { workspace = true }
 valence-osmosis-cl-lper              = { workspace = true }
 valence-osmosis-cl-withdrawer        = { workspace = true }
-valence-encoder-broker               = { workspace = true }
-valence-neutron-ic-querier           = { workspace = true }
-valence-drop-liquid-staker           = { workspace = true }
 valence-program-registry             = { workspace = true }
 
 # utils
